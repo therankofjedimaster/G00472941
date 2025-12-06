@@ -16,5 +16,26 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label>Enter Ingredients</ion-label>
+    <ion-input type="text" placeholder="carrots, beef, potatoes" [(ngModel)]="ingredients"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-button color="primary" (click)="searchRecipes()">SEARCH</ion-button>
+  </ion-item>
+  <div class="recipe-results">
+    <ion-card *ngFor="let recipe of recipes">
+      <img [src]="recipe.image" alt="Image of {{recipe.title}}" />
 
+      <ion-card-header>
+        <ion-card-title>{{ recipe.title }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-button size="small" color="primary" [routerLink]="['/recipes', recipe.id]">
+          DETAILS
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
