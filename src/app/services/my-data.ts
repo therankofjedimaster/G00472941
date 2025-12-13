@@ -37,4 +37,32 @@ this.measurementUnit$$.next(unit as MeasurementUnit);
 from (this.storage.getFavouriteRecipeIds()).subscribe(ids => {
 this.favouriteIds$$.next(ids);
  }); }
+
+//Toggles a recipe ID in the favourites list using a Set for clean add/delete logic.
+
+    public async toggleFavourite(recipeId: number): Promise<void> {
+        
+        //Get the current list of IDs
+        const currentIds = this.favouriteIds$$.getValue();
+        
+        // Convert the current array to a Set for efficient toggling
+        const favouriteSet = new Set(currentIds);
+
+        if (favouriteSet.has(recipeId)) {
+            // The ID is a favorite, so delete it
+            favouriteSet.delete(recipeId); 
+        } else {
+            // The ID is not a favorite, so add it
+            favouriteSet.add(recipeId);    
+        }
+
+        // Convert the Set back to an array (Array.from is clean and concise)
+        const newIds = Array.from(favouriteSet);
+
+        // Update the state stream (notifies all subscribers)
+        this.favouriteIds$$.next(newIds);
+        
+        // Persist the new list to storage
+        await this.storage.setFavouriteRecipeIds(newIds);
+ }
 }
