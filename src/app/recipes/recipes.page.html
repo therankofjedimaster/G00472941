@@ -52,10 +52,6 @@
         <ion-label>
           <h3>{{ ingredient.name }}</h3>
           <p>{{ ingredient.original }}</p>
-        </ion-label>
-
-
-        <ion-note slot="end">
           <ng-container *ngIf="currentUnit === 'Metric'">
             {{ ingredient.measures.metric.amount | number:'1.0-2' }}
             {{ ingredient.measures.metric.unitLong }}
@@ -64,7 +60,7 @@
             {{ ingredient.measures.us.amount | number:'1.0-2' }}
             {{ ingredient.measures.us.unitLong }}
           </ng-container>
-        </ion-note>
+        </ion-label>
 
       </ion-item>
     </ion-list>
