@@ -5,11 +5,12 @@ import { RouterLink, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {addIcons} from 'ionicons';
-import {heart, settings} from 'ionicons/icons';
+import {heart, settings, home} from 'ionicons/icons';
 
 addIcons({
   'heart': heart,
-  'settings': settings
+  'settings': settings,
+  'home': home
 });
 @Component({
   selector: 'app-home',

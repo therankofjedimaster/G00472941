@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink, Router } from '@angular/router';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, IonIcon } from '@ionic/angular/standalone';
 import {addIcons} from 'ionicons';
-import {heart, settings} from 'ionicons/icons';
+import {heart, settings, home} from 'ionicons/icons';
 
 addIcons({
   'heart': heart,
-  'settings': settings
+  'settings': settings,
+  'home': home
 });
 @Component({
   selector: 'app-favourites',

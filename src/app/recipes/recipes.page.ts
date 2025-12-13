@@ -6,12 +6,13 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonIcon, IonBut
 import { MyHttp } from '../services/my-http';
 import { MyData } from '../services/my-data';
 import {addIcons} from 'ionicons';
-import {heart, settings} from 'ionicons/icons';
+import {heart, settings, home} from 'ionicons/icons';
 import { RouterLink } from '@angular/router';
 
 addIcons({
   'heart': heart,
-  'settings': settings
+  'settings': settings,
+  'home': home
 });
 @Component({
   selector: 'app-recipes',
