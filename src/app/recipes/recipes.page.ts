@@ -2,7 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonIcon, IonButtons, IonSpinner } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonIcon, IonButtons, IonSpinner, IonList, IonItem, IonLabel, IonNote } from '@ionic/angular/standalone';
 import { MyHttp } from '../services/my-http';
 import { MyData } from '../services/my-data';
 import {addIcons} from 'ionicons';
@@ -18,7 +18,7 @@ addIcons({
   templateUrl: './recipes.page.html',
   styleUrls: ['./recipes.page.scss'],
   standalone: true,
-  imports: [IonButtons, IonIcon, IonButton, IonContent, IonHeader, IonTitle, IonToolbar, IonSpinner, RouterLink, CommonModule, FormsModule]
+  imports: [IonNote, IonLabel, IonItem, IonList, IonButtons, IonIcon, IonButton, IonContent, IonHeader, IonTitle, IonToolbar, IonSpinner, RouterLink, CommonModule, FormsModule]
 })
 export class RecipesPage implements OnInit {
   //Data properties here
@@ -32,6 +32,7 @@ export class RecipesPage implements OnInit {
 
   //Property for the unit to be used in the HTML *ngIf conditions
   currentUnit: 'Metric' | 'US' = 'Metric';
+image: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,

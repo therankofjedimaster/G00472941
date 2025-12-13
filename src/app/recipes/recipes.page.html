@@ -30,5 +30,54 @@
     <p>{{ error }}</p>
   </div>
 
-  <img [src]="recipeDetails.image" [alt]="recipeDetails.title" />
+  <ng-container *ngIf="!isLoading && !error && recipeDetails">
+
+    <img [src]="recipeDetails.image" [alt]="recipeDetails.title" />
+    <br>
+
+    <ion-button (click)="toggleFavorite()" [color]="isFavorite ? 'danger' : 'medium'">
+      <ion-icon slot="start" name="heart"></ion-icon>
+      {{ isFavorite ? 'Remove from Favourites' : 'Add to Favourites' }}
+    </ion-button>
+
+    <h2>Ingredients ({{ currentUnit }})</h2>
+
+    <ion-list>
+      <ion-item *ngFor="let ingredient of recipeDetails.extendedIngredients" lines="none">
+        <img [src]="'https://spoonacular.com/cdn/ingredients_100x100/' + ingredient.image" [alt]="ingredient.original"
+          slot="start" style="width: 50px; height: 50px;">
+        <ion-label>
+          <h3>{{ ingredient.name }}</h3>
+          <p>{{ ingredient.original }}</p>
+        </ion-label>
+
+
+        <ion-note slot="end">
+          <ng-container *ngIf="currentUnit === 'Metric'">
+            {{ ingredient.measures.metric.amount | number:'1.0-2' }}
+            {{ ingredient.measures.metric.unitLong }}
+          </ng-container>
+          <ng-container *ngIf="currentUnit === 'US'">
+            {{ ingredient.measures.us.amount | number:'1.0-2' }}
+            {{ ingredient.measures.us.unitLong }}
+          </ng-container>
+        </ion-note>
+
+      </ion-item>
+    </ion-list>
+
+    <h2>Instructions</h2>
+
+    <ol *ngIf="recipeDetails.analyzedInstructions && recipeDetails.analyzedInstructions[0]?.steps">
+      <li *ngFor="let step of recipeDetails.analyzedInstructions[0].steps">
+        {{ step.step }}
+      </li>
+    </ol>
+
+    <section *ngIf="!recipeDetails.analyzedInstructions || !recipeDetails.analyzedInstructions[0]?.steps">
+      <p>Instructions in simple format:</p>
+      <div [innerHTML]="recipeDetails.instructions"></div>
+    </section>
+
+  </ng-container>
 </ion-content>
