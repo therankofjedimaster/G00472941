@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButtons, IonButton, IonLabel, IonInput, IonItem, IonCardContent, IonCard, IonCardHeader, IonCardTitle,} from '@ionic/angular/standalone';
 import { MyHttp } from 'src/app/services/my-http';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {addIcons} from 'ionicons';
@@ -20,7 +20,7 @@ addIcons({
 export class HomePage {
   public recipes: any[] = [];
   public ingredients: string = '';
-  constructor(private httpService: MyHttp) {
+  constructor(private httpService: MyHttp, private router: Router) {
   }
   public searchRecipes() {
   this.httpService.getAllRecipes(this.ingredients).subscribe({
@@ -31,5 +31,8 @@ export class HomePage {
                 console.error('Search failed:', err);
               }
             });
+  }
+  navigateToRecipe(id: number) {
+    this.router.navigate(['/recipes', id]);
   }
 }

@@ -4,21 +4,11 @@
       G00472941
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button>
-        <ion-buttons slot="end">
-          <ion-button>
-            <ion-icon name="heart"><img src="https://unpkg.com/ionicons@7.1.0/dist/svg/heart.svg"
-                alt="Heart Icon"></ion-icon>
-          </ion-button>
-        </ion-buttons>
+      <ion-button [routerLink]="['/favourites']">
+        <ion-icon name="heart"></ion-icon>
       </ion-button>
-
-      <ion-button>
-        <ion-buttons slot="end">
-          <ion-button>
-            <ion-icon name="settings"></ion-icon>
-          </ion-button>
-        </ion-buttons>
+      <ion-button [routerLink]="['/settings']">
+        <ion-icon name="settings"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -41,7 +31,7 @@
       </ion-card-header>
 
       <ion-card-content>
-        <ion-button size="small" color="primary" [routerLink]="['/recipes', recipe.id]">
+        <ion-button size="small" color="primary" (click)="navigateToRecipe(recipe.id)">
           DETAILS
         </ion-button>
       </ion-card-content>

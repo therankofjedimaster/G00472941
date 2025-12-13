@@ -1,6 +1,14 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Settings</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/favourites']">
+        <ion-icon name="heart"></ion-icon>
+      </ion-button>
+      <ion-button [routerLink]="['/settings']">
+        <ion-icon name="settings"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

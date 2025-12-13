@@ -1,25 +1,24 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Storage as IonicStorage } from '@ionic/storage-angular';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Storage {
-  private storage: any| null = null;
-
+  // We rely on the constructor to properly inject the Storage service 
+  constructor(private storage: IonicStorage) {
+    this.init();
+  }
+  // Initializes the storage engine
+  async init() {
+    // Create the storage instance
+    await this.storage.create();
+  }
   //Defining keys for storage
   private  MEASUREMENT_KEY = 'measurementUnit';
   private  FAVOURITES_KEY = 'favouriteRecipeIds';
   //Defining default values for measurement unit
   public DEFAULT_UNIT = 'Metric';
-  // We rely on the constructor to properly inject the Storage service 
-  constructor(@Inject('IonicStorage') private storageEngine: any) {
-    this.init();
-  }
-  // Initializes the storage engine
-  async init() {
-    // Assign the created storage instance to the clean property name
-    this.storage = await this.storage.create();
-  }
   // Get measurement unit from storage
   public async getMeasurementUnit(): Promise<string> {
     const unit = await this.storage.get(this.MEASUREMENT_KEY);

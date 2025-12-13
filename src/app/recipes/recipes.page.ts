@@ -2,16 +2,23 @@ import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonIcon, IonButtons, IonSpinner } from '@ionic/angular/standalone';
 import { MyHttp } from '../services/my-http';
 import { MyData } from '../services/my-data';
+import {addIcons} from 'ionicons';
+import {heart, settings} from 'ionicons/icons';
+import { RouterLink } from '@angular/router';
 
+addIcons({
+  'heart': heart,
+  'settings': settings
+});
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.page.html',
   styleUrls: ['./recipes.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonButtons, IonIcon, IonButton, IonContent, IonHeader, IonTitle, IonToolbar, IonSpinner, RouterLink, CommonModule, FormsModule]
 })
 export class RecipesPage implements OnInit {
   //Data properties here
