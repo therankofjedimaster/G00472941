@@ -19,20 +19,24 @@ addIcons({
   imports: [IonCardTitle, IonCardHeader, IonCard, IonCardContent, IonItem, IonInput, IonLabel, IonButton, IonButtons, IonIcon, IonHeader, IonToolbar, IonTitle, IonContent, RouterLink, CommonModule, FormsModule,],
 })
 export class HomePage {
+  // Define properties for recipes and ingredients
   public recipes: any[] = [];
   public ingredients: string = '';
   constructor(private httpService: MyHttp, private router: Router) {
   }
+  // Method to search for recipes based on ingredients
   public searchRecipes() {
   this.httpService.getAllRecipes(this.ingredients).subscribe({
               next: (data: any) => {
                 this.recipes = data.results;
               },
+              // Handle errors
     error: (err: any) => {
                 console.error('Search failed:', err);
               }
             });
   }
+  // Method to navigate to recipe details page
   navigateToRecipe(id: number) {
     this.router.navigate(['/recipes', id]);
   }

@@ -28,20 +28,20 @@ interface RecipeListItem {
   imports: [IonCardContent, IonCardTitle, IonCardHeader, IonList, IonCard, IonLabel, IonSpinner, IonItem, IonIcon, IonButton, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, RouterLink]
 })
 export class FavouritesPage implements OnInit {
-  
+  // List of favorite recipes to display
   public favoriteRecipes: RecipeListItem[] = [];
   public isLoading: boolean = true;
   public error: string | null = null;
-  
+  // Inject MyData and MyHttp services
   constructor(
     private myData: MyData,
     private myHttp: MyHttp
   ) { }
-
+// OnInit lifecycle hook to load favorites when the component initializes
   ngOnInit() {
     this.loadFavourites();
   }
-  
+  // Method to load favorite recipes
   private loadFavourites(): void {
     this.isLoading = true;
     this.error = null;
@@ -72,11 +72,12 @@ export class FavouritesPage implements OnInit {
                 this.isLoading = false;
               }
             },
+            // Handle error for individual recipe fetch
             error: (err) => {
               console.error('Error fetching recipe ID:', id, err);
               this.error = 'Failed to load all favorite recipes.';
               completedRequests++;
-              
+              // Even on error, check if all requests have returned
               if (completedRequests === ids.length) {
                 this.isLoading = false;
               }
@@ -84,8 +85,8 @@ export class FavouritesPage implements OnInit {
           });
         });
       },
+       // Handle error if the initial list of IDs couldn't be retrieved
       error: (err) => {
-        // Handle error if the initial list of IDs couldn't be retrieved
         this.error = 'Could not retrieve favorite IDs.';
         this.isLoading = false;
       }

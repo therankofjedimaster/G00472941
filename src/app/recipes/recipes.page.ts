@@ -23,7 +23,7 @@ addIcons({
 })
 export class RecipesPage implements OnInit {
   //Data properties here
-  recipeDetails: any = null;
+recipeDetails: any = null;
  recipeId: number | null = null;
 
  //State properties here
@@ -39,14 +39,15 @@ image: any;
     private activatedRoute: ActivatedRoute,
     private myHttp: MyHttp,
     private myData: MyData  
-  ) { }
+  ) {
+      addIcons({home,heart,settings}); }
 
   ngOnInit() {
     //Get the recipe ID from the route parameters
 const idString = this.activatedRoute.snapshot.paramMap.get('id');    
 if (idString) {
         this.recipeId = Number(idString); // Convert string to number
-  // 2. Immediately trigger all necessary logic:
+  //Immediately trigger all necessary logic:
         this.fetchRecipeDetails();
         this.subscribeToUnit();
         this.subscribeToFavorites();  
