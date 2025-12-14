@@ -61,17 +61,11 @@
     </ion-list>
 
     <h2>Instructions</h2>
-
     <ol *ngIf="recipeDetails.analyzedInstructions && recipeDetails.analyzedInstructions[0]?.steps">
       <li *ngFor="let step of recipeDetails.analyzedInstructions[0].steps">
         {{ step.step }}
       </li>
     </ol>
-
-    <section *ngIf="!recipeDetails.analyzedInstructions || !recipeDetails.analyzedInstructions[0]?.steps">
-      <p>Instructions in simple format:</p>
-      <div [innerHTML]="recipeDetails.instructions"></div>
-    </section>
   </ng-container>
   <ion-button (click)="toggleFavorite()" [color]="isFavorite ? 'danger' : 'medium'">
     <ion-icon slot="start" name="heart"></ion-icon>
