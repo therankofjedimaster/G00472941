@@ -9,6 +9,7 @@ import {addIcons} from 'ionicons';
 import {heart, settings, home} from 'ionicons/icons';
 import { RouterLink } from '@angular/router';
 
+// Add icons to the application
 addIcons({
   'heart': heart,
   'settings': settings,

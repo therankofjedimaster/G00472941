@@ -8,6 +8,7 @@ import { MyHttp } from '../services/my-http';
 import {addIcons} from 'ionicons';
 import {heart, settings, home} from 'ionicons/icons';
 
+// Add icons to the application
 addIcons({
   'heart': heart,
   'settings': settings,

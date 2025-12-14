@@ -7,12 +7,14 @@ import { MyData } from '../services/my-data';
 import {addIcons} from 'ionicons';
 import {heart, settings, home} from 'ionicons/icons';
 
+// Add icons to the application
 addIcons({
   'heart': heart,
   'settings': settings,
   'home': home
 });
 
+// Define a type for measurement units
 type MeasurementUnit = 'Metric' | 'US';
 
 @Component({
@@ -24,6 +26,7 @@ type MeasurementUnit = 'Metric' | 'US';
 })
 export class SettingsPage implements OnInit { 
   
+  // Property to hold the selected measurement unit
   public selectedUnit: MeasurementUnit = 'Metric';
   
   constructor(private myData: MyData) {
@@ -39,7 +42,8 @@ export class SettingsPage implements OnInit {
       this.selectedUnit = unit;
     });
   }
-
+  
+// Method to handle unit change from the UI
   public unitChanged(event: any): void {
     const newUnit = event.detail.value as MeasurementUnit;
     this.myData.setMeasurementUnit(newUnit); 
