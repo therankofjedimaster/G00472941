@@ -42,7 +42,7 @@
     <ion-list>
       <ion-item *ngFor="let ingredient of recipeDetails.extendedIngredients" lines="none">
         <img [src]="'https://spoonacular.com/cdn/ingredients_100x100/' + ingredient.image" [alt]="ingredient.original"
-          slot="start" style="width: 50px; height: 50px;">
+          slot="start" style="width: 100px; height: 100px;">
         <ion-label>
           <h2>{{ ingredient.original }}</h2>
           <h3 *ngIf="currentUnit === 'Metric'">
