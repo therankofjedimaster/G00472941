@@ -65,4 +65,12 @@ this.favouriteIds$$.next(ids);
         // Persist the new list to storage
         await this.storage.setFavouriteRecipeIds(newIds);
  }
+ // The 'setMeasurementUnit' method is needed by the SettingsPage
+public async setMeasurementUnit(unit: MeasurementUnit): Promise<void> {
+    //Update the state stream (notifies all subscribers, including RecipesPage)
+    this.measurementUnit$$.next(unit);
+
+    //Persist the new unit to storage (uses the setMeasurementUnit from storage.ts)
+    await this.storage.setMeasurementUnit(unit);
+}
 }

@@ -38,11 +38,6 @@
     <img [src]="recipeDetails.image" [alt]="recipeDetails.title" />
     <br>
 
-    <ion-button (click)="toggleFavorite()" [color]="isFavorite ? 'danger' : 'medium'">
-      <ion-icon slot="start" name="heart"></ion-icon>
-      {{ isFavorite ? 'Remove from Favourites' : 'Add to Favourites' }}
-    </ion-button>
-
     <h2>Ingredients ({{ currentUnit }})</h2>
 
     <ion-list>
@@ -77,6 +72,9 @@
       <p>Instructions in simple format:</p>
       <div [innerHTML]="recipeDetails.instructions"></div>
     </section>
-
   </ng-container>
+  <ion-button (click)="toggleFavorite()" [color]="isFavorite ? 'danger' : 'medium'">
+    <ion-icon slot="start" name="heart"></ion-icon>
+    {{ isFavorite ? 'Remove from Favourites' : 'Add to Favourites' }}
+  </ion-button>
 </ion-content>
