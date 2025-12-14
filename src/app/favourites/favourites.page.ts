@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterLink, Router } from '@angular/router';
+import { RouterLink} from '@angular/router';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, IonIcon, IonItem, IonSpinner, IonLabel, IonCard, IonList, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/angular/standalone';
 import { MyData } from '../services/my-data';
 import { MyHttp } from '../services/my-http';
